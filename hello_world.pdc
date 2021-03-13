@@ -1,0 +1,50 @@
+# Kommentare werden so eingeleitet (wie in Awk)
+# zuerst die Metadaten; sie erscheinen in den PDF-Eigenschaften
+filename hello_world.pdf
+author Demo User
+title Hello World
+subject Demo Page A4
+# Seitengroesse: Breite und Hoehe in mm
+page_size 210 297
+# Definieren der verwendeten Schriften und zuweisen eines Kuerzels
+font Helvetica F1
+font Helvetica-Bold F2
+# Anwenden der definierten Normalschrift (Kuerzel, Groesse in pt, x-Wert, y-Wert in mm, auszugebender Text)
+# Der Nullpunkt ist unten links
+text F1 8 6 287 Kopfzeile links
+text F1 8 182 287 Kopfzeile rechts
+text F1 8 6 8 filename.pdc
+text F1 8 92 8 Autor
+text F1 8 190 8 Datum
+text F1 22 80 261 Hello World
+# Linen zeichnen (Breite in mm, Stützpunkte mit x/y Koordinaten)
+line 0.3 20 245 190 245
+line 0.3 20 245 20 230
+line 0.3 86 245 86 230
+line 0.3 112 245 112 230
+line 0.3 138 245 138 230
+line 0.3 164 245 164 230
+line 0.3 190 245 190 230
+# und wieder Text, diesmal die definierte Fettschrift
+text F2 12 23 236 1. Feld
+text F2 12 89 236 2. Feld
+text F2 12 115 238 3. Feld
+text F2 12 115 233 2. Zeile
+text F2 12 141 236 4. Feld
+text F2 12 167 238 5. Feld
+text F2 12 167 233 2. Zeile
+# weitere Linien
+line 0.3 20 230 190 230
+line 0.3 20 230 20 223
+line 0.3 86 230 86 223
+line 0.3 112 230 112 223
+line 0.3 138 230 138 223
+line 0.3 164 230 164 223
+line 0.3 190 230 190 223
+# nochmals Text, wieder die definierte Normalschrift
+text F1 12 23 225 erster Eintrag
+text F1 12 89 225  9
+text F1 12 115 225 0
+text F1 12 141 225  0
+text F1 12 167 225 9
+line 0.3 20 223 190 223
