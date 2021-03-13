@@ -5,4 +5,4 @@ Das Prinzip basiert auf dem «graph processor» gemäss Aho et al.: The Awk Prog
 
 Ermöglicht werden einfache PDFs mit Text und Linien. Schriften können nicht eingebunden werden, daher ist man an die PDF Standardschriften gemäss http://www.p2501.ch/pdf-howto/grundlagen/metadaten/schriften gebunden.
 
-Usage: ./pdc2pdf.awk <PDC-File>
+Usage: _./pdc2pdf.awk_
