@@ -1,0 +1,48 @@
+#!/bin/bash
+###############################################################
+#
+# Build-Script fuer pdc2pdf    31.10.2018
+# Autor: Adrian Boehlen
+#
+# erzeugt aus den einzelnen Modulen eine AWK-Datei
+#
+###############################################################
+
+if [ $# != 1 ]
+then
+  echo ' ' 
+  echo ' '
+  echo '*****************************'
+  echo 'usage:  build_pdc <resultfile>'
+  echo '*****************************'
+  echo ' '
+  echo '(Beispiel: build_pdc pdc2pdf.awk)'
+  echo ' '
+  echo ' '
+  exit
+fi
+
+# aktuellen Zeitpunkt festlegen
+jetzt=`date -d now +%Y%m%d%H%M%S`
+
+# Inhalt der Module zusammenfuehren
+cat pdc2pdf_main.awk > $1
+cat PDF_header.awkm >> $1
+cat PDF_pages_font.awkm >> $1
+cat PDF_page.awkm >> $1
+cat PDF_inhalt.awkm >> $1
+cat PDF_trailer.awkm >> $1
+cat PDF_funktionen.awkm >> $1
+cat PDF_xref.awkm >> $1
+
+# Header bereinigen und aufraeumen
+sed '/eingebundene Module/d' $1 > tmp1.txt
+sed '/@include/d' tmp1.txt > tmp2.txt
+sed '/Es werden diverse Module/d' tmp2.txt > tmp1.txt
+sed '/Zum Ableiten einer Standalone/d' tmp1.txt > tmp2.txt
+sed  "s/pdc2pdf V0.*20../pdc2pdf V0.7 Build ${jetzt}/1" tmp2.txt > $1
+rm -f tmp1.txt
+rm -f tmp2.txt
+
+chmod +x $1
+echo 'Programmdatei '$1' wurde erfolgreich angelegt'
