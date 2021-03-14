@@ -1,4 +1,5 @@
 # Kommentare werden so eingeleitet (wie in Awk)
+# muss in ANSI codiert sein (Latin-1, Westeuropäisch)
 # zuerst die Metadaten; sie erscheinen in den PDF-Eigenschaften
 filename hello_world.pdf
 author Demo User
@@ -42,9 +43,9 @@ line 0.3 138 230 138 223
 line 0.3 164 230 164 223
 line 0.3 190 230 190 223
 # nochmals Text, wieder die definierte Normalschrift
-text F1 12 23 225 erster Eintrag
-text F1 12 89 225  9
-text F1 12 115 225 0
-text F1 12 141 225  0
-text F1 12 167 225 9
+text F1 12 23 225 Beispiele mit Sonderzeichen
+text F1 12 89 225  [](){}
+text F1 12 115 225 ÄäÖöÜü
+text F1 12 141 225 ß
+text F1 12 167 225 @
 line 0.3 20 223 190 223
