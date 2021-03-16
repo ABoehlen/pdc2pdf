@@ -1,0 +1,236 @@
+%PDF-1.2
+1 0 obj
+<<
+ /Type /Catalog
+ /Title 2 0 R
+ /Pages 3 0 R
+>>
+endobj
+2 0 obj
+<<
+ /Title (Hello World)
+ /Author (Demo User)
+ /Creator (pdc2pdf.awk)
+ /Producer (pdc2pdf.awk)
+ /Subject (Demo Page A4)
+ /Keywords (have fun)
+ /CreationDate (20210316145019Z)
+>>
+endobj
+3 0 obj
+<<
+ /Type /Pages
+ /Count 1
+ /Kids [6 0 R]
+ /Resources <<
+  /ProcSet [/PDF /Text]
+  /Font <<
+   /F1 4 0 R
+   /F2 5 0 R
+  >>
+ >>
+>>
+endobj
+4 0 obj
+<<
+ /Type /Font
+ /Subtype /Type1
+ /Name /F1
+ /BaseFont /Helvetica
+ /Encoding /WinAnsiEncoding
+>>
+endobj
+5 0 obj
+<<
+ /Type /Font
+ /Subtype /Type1
+ /Name /F2
+ /BaseFont /Helvetica-Bold
+ /Encoding /WinAnsiEncoding
+>>
+endobj
+6 0 obj
+<<
+ /Type /Page
+ /Parent 3 0 R
+ /MediaBox [0 0 595.275 841.889]
+ /Contents 7 0 R
+>>
+endobj
+7 0 obj
+<<
+ /Length 1620
+>>
+stream
+0.850393 w
+56.6929 694.488 m
+538.582 694.488 l
+S
+0.850393 w
+56.6929 694.488 m
+56.6929 651.968 l
+S
+0.850393 w
+243.779 694.488 m
+243.779 651.968 l
+S
+0.850393 w
+317.48 694.488 m
+317.48 651.968 l
+S
+0.850393 w
+391.181 694.488 m
+391.181 651.968 l
+S
+0.850393 w
+464.882 694.488 m
+464.882 651.968 l
+S
+0.850393 w
+538.582 694.488 m
+538.582 651.968 l
+S
+0.850393 w
+56.6929 651.968 m
+538.582 651.968 l
+S
+0.850393 w
+56.6929 651.968 m
+56.6929 632.126 l
+S
+0.850393 w
+243.779 651.968 m
+243.779 632.126 l
+S
+0.850393 w
+317.48 651.968 m
+317.48 632.126 l
+S
+0.850393 w
+391.181 651.968 m
+391.181 632.126 l
+S
+0.850393 w
+464.882 651.968 m
+464.882 632.126 l
+S
+0.850393 w
+538.582 651.968 m
+538.582 632.126 l
+S
+0.850393 w
+56.6929 632.126 m
+538.582 632.126 l
+S
+BT
+/F1 8 Tf
+17.0079 813.543 Td
+(Kopfzeile links) Tj
+ET
+BT
+/F1 8 Tf
+515.905 813.543 Td
+(Kopfzeile rechts) Tj
+ET
+BT
+/F1 8 Tf
+17.0079 22.6772 Td
+(filename.pdc) Tj
+ET
+BT
+/F1 8 Tf
+260.787 22.6772 Td
+(Autor) Tj
+ET
+BT
+/F1 8 Tf
+538.582 22.6772 Td
+(Datum) Tj
+ET
+BT
+/F1 22 Tf
+226.772 739.842 Td
+(Hello World) Tj
+ET
+BT
+/F2 12 Tf
+65.1968 668.976 Td
+(1. Feld) Tj
+ET
+BT
+/F2 12 Tf
+252.283 668.976 Td
+(2. Feld) Tj
+ET
+BT
+/F2 12 Tf
+325.984 674.645 Td
+(3. Feld) Tj
+ET
+BT
+/F2 12 Tf
+325.984 660.472 Td
+(2. Zeile) Tj
+ET
+BT
+/F2 12 Tf
+399.685 668.976 Td
+(4. Feld) Tj
+ET
+BT
+/F2 12 Tf
+473.386 674.645 Td
+(5. Feld) Tj
+ET
+BT
+/F2 12 Tf
+473.386 660.472 Td
+(2. Zeile) Tj
+ET
+BT
+/F1 12 Tf
+65.1968 637.795 Td
+(Beispiele mit Sonderzeichen) Tj
+ET
+BT
+/F1 12 Tf
+252.283 637.795 Td
+([](){}) Tj
+ET
+BT
+/F1 12 Tf
+325.984 637.795 Td
+(ÄäÖöÜü) Tj
+ET
+BT
+/F1 12 Tf
+399.685 637.795 Td
+(ß) Tj
+ET
+BT
+/F1 12 Tf
+473.386 637.795 Td
+(@) Tj
+ET
+endstream
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000124 00000 n 
+0000000189 00000 n 
+0000000382 00000 n 
+0000000527 00000 n 
+0000000639 00000 n 
+0000000756 00000 n 
+0000000855 00000 n 
+trailer
+<<
+ /Size 8
+ /Root 1 0 R
+ /Info 2 0 R
+>>
+startxref
+2412
+%%EOF
+
