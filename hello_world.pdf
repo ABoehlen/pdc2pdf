@@ -14,7 +14,7 @@ endobj
  /Producer (pdc2pdf.awk)
  /Subject (Demo Page A4)
  /Keywords (have fun)
- /CreationDate (20210316145019Z)
+ /CreationDate (20210316171241Z)
 >>
 endobj
 3 0 obj
@@ -59,7 +59,7 @@ endobj
 endobj
 7 0 obj
 <<
- /Length 1620
+ /Length 1666
 >>
 stream
 0.850393 w
@@ -190,7 +190,7 @@ ET
 BT
 /F1 12 Tf
 65.1968 637.795 Td
-(Beispiele mit Sonderzeichen) Tj
+(einige Sonderzeichen) Tj
 ET
 BT
 /F1 12 Tf
@@ -200,30 +200,30 @@ ET
 BT
 /F1 12 Tf
 325.984 637.795 Td
-(ÄäÖöÜü) Tj
+(\304\344\326\366\334\374) Tj
 ET
 BT
 /F1 12 Tf
 399.685 637.795 Td
-(ß) Tj
+(\253hallo\273) Tj
 ET
 BT
 /F1 12 Tf
 473.386 637.795 Td
-(@) Tj
+(\275 \271 \262 \263 \337) Tj
 ET
 endstream
 endobj
 xref
 0 8
 0000000000 65535 f 
-0000000124 00000 n 
-0000000189 00000 n 
-0000000382 00000 n 
-0000000527 00000 n 
-0000000639 00000 n 
-0000000756 00000 n 
-0000000855 00000 n 
+0000000009 00000 n 
+0000000074 00000 n 
+0000000267 00000 n 
+0000000412 00000 n 
+0000000524 00000 n 
+0000000641 00000 n 
+0000000740 00000 n 
 trailer
 <<
  /Size 8
@@ -231,6 +231,6 @@ trailer
  /Info 2 0 R
 >>
 startxref
-2412
+2458
 %%EOF
 

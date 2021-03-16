@@ -48,9 +48,9 @@ line 0.3 138 230 138 223
 line 0.3 164 230 164 223
 line 0.3 190 230 190 223
 # nochmals Text, wieder die definierte Normalschrift
-text F1 12 23 225 Beispiele mit Sonderzeichen
+text F1 12 23 225 einige Sonderzeichen
 text F1 12 89 225  [](){}
 text F1 12 115 225 ÄäÖöÜü
-text F1 12 141 225 ß
-text F1 12 167 225 @
+text F1 12 141 225 «hallo»
+text F1 12 167 225 ½ ¹ ² ³ ß
 line 0.3 20 223 190 223

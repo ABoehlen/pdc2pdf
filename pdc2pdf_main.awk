@@ -1,7 +1,7 @@
 #!/usr/local/bin/awk -f
 #########################################################################################
 #
-# pdc2pdf V0.7 24.09.2018
+# pdc2pdf V0.8 16.03.2021
 # Autor: Adrian Boehlen
 #
 # Programm konvertiert ein PDC-File in ein PDF
@@ -25,6 +25,7 @@
 BEGIN {
   number = "^[-+]?([0-9]+[.]?[0-9]*|[.][0-9]+)" \
            "([eE][-+]?[0-9]+)?$";
+  sonderzeichen_regex = "[ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜø£Ø×áíóúñÑªº¿®¬½¼¡«»ÁÂÀ©¢¥ãÃ¤ğĞÊËÈÍÎÏ¦ÌÓßÔÒõÕµşŞÚÛÙıİ¯´­±¾¶§÷¸°¨·¹³²]";
 }
 
 ########## Inputfile einlesen ##########
@@ -122,13 +123,14 @@ END {
     inhalt = inhalt line_width(linie_breite[i]);                      # Linienbreite festlegen
     inhalt = inhalt stroke_line(linie_koord[i]);                      # Linie zeichnen
   }
+  
   # Text setzen
   for (i = 1; i <= anz_text; i++) {
     text_str = "";
     anz_char = split(text[i], text_arr, "");  # Text in Einzelzeichen aufbrechen
     for (j = 1; j <= anz_char; j++) {
-      # Sonderzeichen ermitteln und in oktalen Code umwandeln
-      if (text_arr[j] ~ /[ÄÖÜÀÈÉäöüàèéçß]/)
+      # Sonderzeichen (ASCII 128-255) ermitteln und in oktalen Code umwandeln
+      if (text_arr[j] ~ sonderzeichen_regex)
         text_str = text_str sprintf("\\%s", oct(ascii(text_arr[j])));
       else
         text_str = text_str text_arr[j];
