@@ -1,6 +1,11 @@
 # Kommentare werden so eingeleitet (wie in Awk)
-# muss in ANSI codiert sein (Latin-1, WesteuropÃ¤isch)
-# zuerst die Metadaten; sie erscheinen in den PDF-Eigenschaften
+#################
+# diese Datei muss in ANSI codiert sein (ISO 8859-1 / Latin-1, Westeuropäisch)
+# das heisst, jedes Zeichen belegt genau 1 Byte
+# als Trennzeichen dient ein Leerzeichen; Namen können ebenfalls Leerzeichen aufweisen (ausser Dateinamen)
+# Argumente werden ebenfalls mittels Leerzeichen getrennt
+#################
+# zuerst die Metadaten; sie erscheinen später in den PDF-Eigenschaften
 filename hello_world.pdf
 author Demo User
 title Hello World
@@ -10,7 +15,7 @@ page_size 210 297
 # Definieren der verwendeten Schriften und zuweisen eines Kuerzels
 font Helvetica F1
 font Helvetica-Bold F2
-# Anwenden der definierten Normalschrift (Kuerzel, Groesse in pt, x-Wert, y-Wert in mm, auszugebender Text)
+# Anwenden der definierten Normalschrift (Kürzel, Grösse in pt, x-Wert, y-Wert in mm, auszugebender Text)
 # Der Nullpunkt ist unten links
 text F1 8 6 287 Kopfzeile links
 text F1 8 182 287 Kopfzeile rechts
@@ -18,7 +23,7 @@ text F1 8 6 8 filename.pdc
 text F1 8 92 8 Autor
 text F1 8 190 8 Datum
 text F1 22 80 261 Hello World
-# Linen zeichnen (Breite in mm, StÃ¼tzpunkte mit x/y Koordinaten)
+# Linen zeichnen (Breite in mm, Stützpunkte mit x/y Koordinaten)
 line 0.3 20 245 190 245
 line 0.3 20 245 20 230
 line 0.3 86 245 86 230
@@ -45,7 +50,7 @@ line 0.3 190 230 190 223
 # nochmals Text, wieder die definierte Normalschrift
 text F1 12 23 225 Beispiele mit Sonderzeichen
 text F1 12 89 225  [](){}
-text F1 12 115 225 Ã„Ã¤Ã–Ã¶ÃœÃ¼
-text F1 12 141 225 ÃŸ
+text F1 12 115 225 ÄäÖöÜü
+text F1 12 141 225 ß
 text F1 12 167 225 @
 line 0.3 20 223 190 223
