@@ -1,6 +1,6 @@
 #########################################################################################
 #
-# PDF_funktionen V1.0.9   25.10.2018
+# PDF_funktionen V1.0.10   18.03.2021
 #
 # Autor: Adrian Boehlen
 #
@@ -10,7 +10,7 @@
 
 ######## erzeugt ASCII-Code des angegebenen Zeichens ########
 
-function ascii(inp,    anz, c, n) {
+function ascii(inp,    c, n) {
   
   for (n = 0; n <= 255; n++)    # fuer alle 256 ASCII Zeichen...
     char[sprintf("%c", n)] = n; # ...Dictionary mit ASCII Codes erzeugen  
