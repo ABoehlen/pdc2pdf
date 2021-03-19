@@ -1,7 +1,7 @@
 #!/usr/local/bin/awk -f
 #########################################################################################
 #
-# pdc2pdf V0.8 16.03.2021
+# pdc2pdf V0.9 17.03.2021
 # Autor: Adrian Boehlen
 #
 # Programm konvertiert ein PDC-File in ein PDF
@@ -23,9 +23,22 @@
 @include "PDF_funktionen.awkm";
 
 BEGIN {
-  number = "^[-+]?([0-9]+[.]?[0-9]*|[.][0-9]+)" \
-           "([eE][-+]?[0-9]+)?$";
+  # Scriptname ermitteln (siehe https://unix.stackexchange.com/questions/228072/how-to-print-own-script-name-in-mawk)
+  getline t < "/proc/self/cmdline";
+  split(t, a, "\0");
+  scriptname = sprintf("%s", a[3]);
+
+  # Druckbare Zeichen im erweiterten ASCII-Zeichensatz (128-255)
   sonderzeichen_regex = "[ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜø£Ø×áíóúñÑªº¿®¬½¼¡«»ÁÂÀ©¢¥ãÃ¤ðÐÊËÈÍÎÏ¦ÌÓßÔÒõÕµþÞÚÛÙýÝ¯´­±¾¶§÷¸°¨·¹³²]";
+
+  # Usage ausgeben, wenn Anzahl Argumente nicht stimmt und Programm beenden
+  if (ARGC != 2) {
+    printf("\n***************************************************\n") > "/dev/stderr";
+    printf("     Usage: %s <pdc file>\n", scriptname)                 > "/dev/stderr";
+    printf("***************************************************\n\n") > "/dev/stderr";
+	beende = 1; # um END-Regel zum sofortigen Beenden zu erzwingen
+	exit;
+  }
 }
 
 ########## Inputfile einlesen ##########
@@ -99,6 +112,10 @@ $1 == "text" {
 ########## PDF aufbauen ##########
 
 END {
+  # damit END nicht ausgefuehrt wird, falls kein File gelesen wird
+  if (beende == 1)
+    exit;
+
   pdf = pdf_header(autor, titel, thema);                 # Header aufbauen
   for (i = 1; i <= anz_font; i++) {                      # Anzahl Fonts ermitteln
     if (i == 1)
@@ -129,7 +146,7 @@ END {
     text_str = "";
     anz_char = split(text[i], text_arr, "");  # Text in Einzelzeichen aufbrechen
     for (j = 1; j <= anz_char; j++) {
-      # Sonderzeichen (ASCII 128-255) ermitteln und in oktalen Code umwandeln
+      # Sonderzeichen ermitteln und in oktalen Code umwandeln
       if (text_arr[j] ~ sonderzeichen_regex)
         text_str = text_str sprintf("\\%s", oct(ascii(text_arr[j])));
       else
