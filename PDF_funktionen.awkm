@@ -1,6 +1,6 @@
 #########################################################################################
 #
-# PDF_funktionen V1.0.10   18.03.2021
+# PDF_funktionen V1.0.11   21.03.2021
 #
 # Autor: Adrian Boehlen
 #
@@ -32,6 +32,12 @@ function oct(dec,    i, j, octNr, octTmp) {
   for (j = i; j >= 1; j--)   # Array in umgekehrter Richtung durchlaufen
     octNr = octNr octTmp[j]; # Ziffern zusammenfuegen...
   return octNr;              # ...und ausgeben
+}
+
+########### rechnet RGB-Werte um (Input: 0 - 255) ###########
+
+function rgb_value(v) {
+  return v / 255;
 }
 
 ########### definiert Strichstaerke (Input: mm) ###########
@@ -71,11 +77,13 @@ function stroke_line(koordinaten,    i, koord_arr, pdf) {
 
 ########### setzt einen Text ###########
 
-# Benoetigt folgende Argumente: Schriftkuerzel gemaess Schriftobjekt, Groesse in Point, Koordinaten, Text
+# Benoetigt folgende Argumente: Schriftkuerzel gemaess Schriftobjekt, Groesse in Point, Koordinaten, Text, Textfarbe (optional)
 
-function set_text(font, fontsize, x, y, text,    pdf) {
+function set_text(font, groesse, x, y, text, textfarbe,   pdf) {
   pdf = "BT\n";
-  pdf = pdf "/" font " " fontsize " Tf\n";
+  if (textfarbe)
+    pdf = pdf textfarbe "rg\n";
+  pdf = pdf "/" font " " groesse " Tf\n";
   pdf = pdf mm2dtp(x) " " mm2dtp(y) " Td\n";
   pdf = pdf "(" text ") Tj\nET\n";
   return pdf;

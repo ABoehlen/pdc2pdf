@@ -1,7 +1,7 @@
 #!/usr/local/bin/awk -f
 #########################################################################################
 #
-# pdc2pdf V0.9 17.03.2021
+# pdc2pdf V1.0.1 21.03.2021
 # Autor: Adrian Boehlen
 #
 # Programm konvertiert ein PDC-File in ein PDF
@@ -36,8 +36,8 @@ BEGIN {
     printf("\n***************************************************\n") > "/dev/stderr";
     printf("     Usage: %s <pdc file>\n", scriptname)                 > "/dev/stderr";
     printf("***************************************************\n\n") > "/dev/stderr";
-	beende = 1; # um END-Regel zum sofortigen Beenden zu erzwingen
-	exit;
+    beende = 1; # um END-Regel zum sofortigen Beenden zu erzwingen
+    exit;
   }
 }
 
@@ -94,13 +94,21 @@ $1 == "line" {
       strichstil[anz_lin] = "";                          # ...Stichstil auf den Leerstring setzen
     else                                                 # sonst...
       strichstil[anz_lin] = $1;                          # ...Strichstil festhalten
-    $1 = "";
+    sub(/[0-9]+[.]?[0-9]*-[0-9]+[.]?[0-9]*/,"");         # Strichstil loeschen
+  }
+  if ($1 ~ /rgb/) {                                      # pruefen, ob Farbe definiert
+    linienfarbe[anz_lin] = $1;                           # Farbe festhalten
+    sub(/rgb,[0-9]+,[0-9]+,[0-9]+/,"");                  # Farbe loeschen
   }
   linie_koord[anz_lin] = $0;                             # Rest als Koordinaten speichern
 }
 $1 == "text" {
   anz_text++;                                            # Anzahl Textobjekte ermitteln
   sub(/^ *text */,"");                                   # "text" am Zeilenanfang loeschen
+  if ($1 ~ /rgb/) {                                      # pruefen, ob Farbe definiert
+    textfarbe[anz_text] = $1;                            # Farbe festhalten
+    sub(/rgb,[0-9]+,[0-9]+,[0-9]+/,"");                  # Farbe loeschen
+  }
   text_kuerzel[anz_text] = $1;                           # Kuerzel F1, F2 etc uebernehmen
   text_groesse[anz_text] = $2;                           # Schriftgroesse
   text_x[anz_text] = $3;                                 # x-Koordinate
@@ -116,23 +124,31 @@ END {
   if (beende == 1)
     exit;
 
-  pdf = pdf_header(autor, titel, thema);                 # Header aufbauen
-  for (i = 1; i <= anz_font; i++) {                      # Anzahl Fonts ermitteln
+  pdf = pdf_header(autor, titel, thema);                              # Header aufbauen
+  for (i = 1; i <= anz_font; i++) {                                   # Anzahl Fonts ermitteln
     if (i == 1)
       font_str = font[i];
     else
-      font_str = font_str " " font[i];                   # Inputstring fuer pdf_pages_font aufbauen
+      font_str = font_str " " font[i];                                # Inputstring fuer pdf_pages_font aufbauen
   }
   pdf = pdf pdf_pages_font(font_str);
   pdf = pdf pdf_page(seitengr["x"], seitengr["y"]);
 
   # Linien zeichnen
   for (i = 1; i <= anz_lin; i++) {
+    if (i in linienfarbe) {                                           # Linienfarbe ergaenzen, wenn definiert
+      linienf_pdf = "";                                               # Farbe zuruecksetzen
+      split(linienfarbe[i], linienf_arr, ",");                        # Farbstring in Elemente aufteilen
+      for (f = 2; f <= (length(linienf_arr)); f++)                    # alle Werte ab dem 2. durchgehen
+        linienf_pdf = linienf_pdf rgb_value(linienf_arr[f]) " ";      # nach jedem Wert ein Leerschlag ergaenzen
+      linienf_pdf = linienf_pdf "RG\n";                               # "RG" anhaengen, Zeile beenden...
+      inhalt = inhalt linienf_pdf;                                    # ...und an Inhalt anfuegen
+    }
     if (i in strichstil) {                                            # Strichstil ergaenzen, wenn definiert
       strichst_pdf = "[";                                             # Beginn mit [
-      split(strichstil[i], strichst_arr, "-");                        # String in Elemente aufteilen
+      split(strichstil[i], strichst_arr, "-");                        # Stil-String in Elemente aufteilen
       for (s = 1; s <= (length(strichst_arr) - 1); s++)               # alle Werte bis zum vorletzten durchgehen
-        strichst_pdf = strichst_pdf strichst_arr[s] " ";              # nach jedem Wert einen Leerschlag ergaenzen...
+        strichst_pdf = strichst_pdf strichst_arr[s] " ";              # nach jedem Wert ein Leerschlag ergaenzen...
       strichst_pdf = strichst_pdf strichst_arr[length(strichst_arr)]; # ...ausser nach dem letzten
       strichst_pdf = strichst_pdf "] 0 d\n";                          # Formatierungsstring abschliessen...
       inhalt = inhalt strichst_pdf;                                   # ...und an Inhalt anfuegen
@@ -143,8 +159,13 @@ END {
   
   # Text setzen
   for (i = 1; i <= anz_text; i++) {
+    if (i in textfarbe) {                                             # Linienfarbe ergaenzen, wenn definiert
+      split(textfarbe[i], textf_arr, ",");                            # Farbstring in Elemente aufteilen
+      for (f = 2; f <= (length(textf_arr)); f++)                      # alle Werte ab dem 2. durchgehen
+        textf_pdf = textf_pdf rgb_value(textf_arr[f]) " ";            # nach jedem Wert ein Leerschlag ergaenzen
+    }
     text_str = "";
-    anz_char = split(text[i], text_arr, "");  # Text in Einzelzeichen aufbrechen
+    anz_char = split(text[i], text_arr, "");                          # Text in Einzelzeichen aufbrechen
     for (j = 1; j <= anz_char; j++) {
       # Sonderzeichen ermitteln und in oktalen Code umwandeln
       if (text_arr[j] ~ sonderzeichen_regex)
@@ -152,7 +173,8 @@ END {
       else
         text_str = text_str text_arr[j];
     }
-    inhalt = inhalt set_text(text_kuerzel[i], text_groesse[i], text_x[i], text_y[i], text_str);
+    inhalt = inhalt set_text(text_kuerzel[i], text_groesse[i], text_x[i], text_y[i], text_str, textf_pdf);
+    textf_pdf = "";                                                   # Farbe zuruecksetzen
     
   }
     

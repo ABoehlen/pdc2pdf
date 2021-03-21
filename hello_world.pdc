@@ -1,3 +1,4 @@
+# 21.03.2021, V1.0
 # Kommentare werden so eingeleitet (wie in Awk)
 #################
 # diese Datei muss in ANSI codiert sein (ISO 8859-1 / Latin-1, Westeuropäisch)
@@ -17,40 +18,47 @@ font Helvetica F1
 font Helvetica-Bold F2
 # Anwenden der definierten Normalschrift (Kürzel, Grösse in pt, x-Wert, y-Wert in mm, auszugebender Text)
 # Der Nullpunkt ist unten links
+# Diese Texte sind in der Standardfarbe Schwarz
 text F1 8 6 287 Kopfzeile links
 text F1 8 182 287 Kopfzeile rechts
 text F1 8 6 8 filename.pdc
 text F1 8 92 8 Autor
 text F1 8 190 8 Datum
-text F1 22 80 261 Hello World
+# Dieser Text ist in roter Farbe
+text rgb,210,35,45 F2 22 80 261 Hello World
 # Linen zeichnen (Breite in mm, Stützpunkte mit x/y Koordinaten)
-line 0.3 20 245 190 245
+# Ausser der ersten sind diese Linien in blauer Farbe
+# Die erste Linie weist eine Stichlierung auf und ist rot
+line 0.4 2-4 rgb,210,35,45 80 259 123 259
+line 0.3 0-0 rgb,0,137,207 20 245 190 245
 line 0.3 20 245 20 230
 line 0.3 86 245 86 230
 line 0.3 112 245 112 230
 line 0.3 138 245 138 230
 line 0.3 164 245 164 230
 line 0.3 190 245 190 230
-# und wieder Text, diesmal die definierte Fettschrift
-text F2 12 23 236 1. Feld
+line 0.3 20 230 190 230
+# Und wieder Text, diesmal die definierte Fettschrift
+# Diese Texte sind in schwarzer Farbe
+text rgb,0,0,0 F2 12 23 236 1. Feld
 text F2 12 89 236 2. Feld
 text F2 12 115 238 3. Feld
 text F2 12 115 233 2. Zeile
 text F2 12 141 236 4. Feld
 text F2 12 167 238 5. Feld
 text F2 12 167 233 2. Zeile
-# weitere Linien
-line 0.3 20 230 190 230
-line 0.3 20 230 20 223
+# Weitere Linien
+# Diese Linien sind in schwarzer Farbe
+line 0.3 rgb,0,0,0 20 230 20 223
 line 0.3 86 230 86 223
 line 0.3 112 230 112 223
 line 0.3 138 230 138 223
 line 0.3 164 230 164 223
 line 0.3 190 230 190 223
-# nochmals Text, wieder die definierte Normalschrift
+line 0.3 20 223 190 223
+# Nochmals Text in Schwarz, wieder die definierte Normalschrift
 text F1 12 23 225 einige Sonderzeichen
 text F1 12 89 225  [](){}
 text F1 12 115 225 ÄäÖöÜü
 text F1 12 141 225 «hallo»
 text F1 12 167 225 ½ ¹ ² ³ ß
-line 0.3 20 223 190 223

@@ -14,7 +14,7 @@ endobj
  /Producer (pdc2pdf.awk)
  /Subject (Demo Page A4)
  /Keywords (have fun)
- /CreationDate (20210317110616Z)
+ /CreationDate (20210321161403Z)
 >>
 endobj
 3 0 obj
@@ -59,9 +59,17 @@ endobj
 endobj
 7 0 obj
 <<
- /Length 1666
+ /Length 1832
 >>
 stream
+0.823529 0.137255 0.176471 RG
+[2 4] 0 d
+1.13386 w
+226.772 734.173 m
+348.661 734.173 l
+S
+0 0.537255 0.811765 RG
+[] 0 d
 0.850393 w
 56.6929 694.488 m
 538.582 694.488 l
@@ -94,6 +102,7 @@ S
 56.6929 651.968 m
 538.582 651.968 l
 S
+0 0 0 RG
 0.850393 w
 56.6929 651.968 m
 56.6929 632.126 l
@@ -148,11 +157,13 @@ BT
 (Datum) Tj
 ET
 BT
-/F1 22 Tf
+0.823529 0.137255 0.176471 rg
+/F2 22 Tf
 226.772 739.842 Td
 (Hello World) Tj
 ET
 BT
+0 0 0 rg
 /F2 12 Tf
 65.1968 668.976 Td
 (1. Feld) Tj
@@ -231,6 +242,6 @@ trailer
  /Info 2 0 R
 >>
 startxref
-2458
+2624
 %%EOF
 
