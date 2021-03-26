@@ -46,6 +46,12 @@ The only argument to be given is the PDC file, because the PDF to be created is 
 ./pdc2pdf_main.awk hello_world.pdc
 ```
 
+Maybe you have to call the interpreter with the script file as argument, like this:
+
+```
+awk -f pdc2pdf_main.awk hello_world.pdc
+```
+
 ## Documentation
 
 A documentation about the PDC syntax is to be found as comments within the `hello_world.pdc` (currently in german).
