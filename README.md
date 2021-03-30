@@ -62,5 +62,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Literature
 \[1\] Adobe Systems Incorporated: PDF Reference, Third Edition, 2001 (https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/pdf_reference_archives/PDFReference.pdf )
+
 \[2\] Aho et al.: The Awk Programming Language, 1988, S. 131ff.
 
