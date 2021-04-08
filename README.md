@@ -10,7 +10,7 @@ PDC based on the concept of "little languages", which the authors of AWK explain
 
 The parameterisation of the PDC is done in common units of measurement, which are then converted internally into the values needed by PDF.
 
-Currently, only text and lines can be processed, but this is already sufficient for many purposes. Fonts cannot be included, so you are bound to the PDF standard fonts according to http://www.p2501.ch/pdf-howto/grundlagen/metadaten/schriften.
+Currently only text and lines can be processed, but this is already sufficient for many purposes. Fonts cannot be included, so you are bound to the 14 standard fonts. For details please have a look at the PDF Reference \[1\], p. 319.
 
 ## System requirements
 
