@@ -1,7 +1,7 @@
 #!/bin/bash
 ###############################################################
 #
-# Build-Script fuer pdc2pdf    31.10.2018
+# Build-Script fuer pdc2pdf    08.04.2021
 # Autor: Adrian Boehlen
 #
 # erzeugt aus den einzelnen Modulen eine AWK-Datei
@@ -40,7 +40,7 @@ sed '/eingebundene Module/d' $1 > tmp1.txt
 sed '/@include/d' tmp1.txt > tmp2.txt
 sed '/Es werden diverse Module/d' tmp2.txt > tmp1.txt
 sed '/Zum Ableiten einer Standalone/d' tmp1.txt > tmp2.txt
-sed  "s/pdc2pdf V0.*20../pdc2pdf V0.7 Build ${jetzt}/1" tmp2.txt > $1
+sed  "s/pdc2pdf V1.*20../pdc2pdf Build ${jetzt}/1" tmp2.txt > $1
 rm -f tmp1.txt
 rm -f tmp2.txt
 
