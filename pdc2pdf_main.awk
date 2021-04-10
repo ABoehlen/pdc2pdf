@@ -1,7 +1,7 @@
 #!/usr/local/bin/awk -f
 #########################################################################################
 #
-# pdc2pdf V1.0.1 21.03.2021
+# pdc2pdf V1.0.2 10.04.2021
 # Autor: Adrian Boehlen
 #
 # Programm konvertiert ein PDC-File in ein PDF
@@ -14,13 +14,13 @@
 
 ########## eingebundene Module ##########
 
-@include "PDF_header.awkm";
-@include "PDF_pages_font.awkm";
-@include "PDF_page.awkm";
-@include "PDF_inhalt.awkm";
-@include "PDF_xref.awkm"
-@include "PDF_trailer.awkm";
-@include "PDF_funktionen.awkm";
+@include "PDF_header.awk";
+@include "PDF_pages_font.awk";
+@include "PDF_page.awk";
+@include "PDF_inhalt.awk";
+@include "PDF_xref.awk"
+@include "PDF_trailer.awk";
+@include "PDF_funktionen.awk";
 
 BEGIN {
   # Scriptname ermitteln (siehe https://unix.stackexchange.com/questions/228072/how-to-print-own-script-name-in-mawk)

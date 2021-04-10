@@ -1,7 +1,7 @@
 #!/bin/bash
 ###############################################################
 #
-# Build-Script fuer pdc2pdf    08.04.2021
+# Build-Script fuer pdc2pdf    10.04.2021
 # Autor: Adrian Boehlen
 #
 # erzeugt aus den einzelnen Modulen eine AWK-Datei
@@ -27,13 +27,13 @@ jetzt=`date -d now +%Y%m%d%H%M%S`
 
 # Inhalt der Module zusammenfuehren
 cat pdc2pdf_main.awk > $1
-cat PDF_header.awkm >> $1
-cat PDF_pages_font.awkm >> $1
-cat PDF_page.awkm >> $1
-cat PDF_inhalt.awkm >> $1
-cat PDF_trailer.awkm >> $1
-cat PDF_funktionen.awkm >> $1
-cat PDF_xref.awkm >> $1
+cat PDF_header.awk >> $1
+cat PDF_pages_font.awk >> $1
+cat PDF_page.awk >> $1
+cat PDF_inhalt.awk >> $1
+cat PDF_trailer.awk >> $1
+cat PDF_funktionen.awk >> $1
+cat PDF_xref.awk >> $1
 
 # Header bereinigen und aufraeumen
 sed '/eingebundene Module/d' $1 > tmp1.txt

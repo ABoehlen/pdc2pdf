@@ -1,6 +1,6 @@
 #########################################################################################
 #
-# PDF_funktionen V1.0.11   21.03.2021
+# PDF_funktionen V1.0.12   08.04.2021
 #
 # Autor: Adrian Boehlen
 #
@@ -37,6 +37,11 @@ function oct(dec,    i, j, octNr, octTmp) {
 ########### rechnet RGB-Werte um (Input: 0 - 255) ###########
 
 function rgb_value(v) {
+  if (v < 0 || v > 255) {
+    print "\nFehler: Ungueltiger RGB-Wert!\n";
+    print "...Programm wird beendet...\n";
+    exit;   
+  }	
   return v / 255;
 }
 

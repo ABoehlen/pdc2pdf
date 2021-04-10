@@ -30,7 +30,7 @@ git clone https://github.com/ABoehlen/pdc2pdf
 cd pdc2pdf
 ```
 
-The programme can then be started directly via `pdc2pdf_main.awk`, as since Gawk 4.0 additional modules (marked with the extension .awkm for clarification) can be included. It is also possible to derive a standalone version using the shell script `build_pdc`. The name is to be defined by the user, e.g.:
+The programme can then be started directly via `pdc2pdf_main.awk`, as since Gawk 4.0 additional modules can be included. It is also possible to derive a standalone version using the shell script `build_pdc`. The name is to be defined by the user, e.g.:
 
 ```
 ./build_pdc pdc2pdf.awk
