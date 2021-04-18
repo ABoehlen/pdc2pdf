@@ -46,3 +46,4 @@ rm -f tmp2.txt
 
 chmod +x $1
 echo 'Programmdatei '$1' wurde erfolgreich angelegt'
+
