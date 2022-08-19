@@ -56,6 +56,8 @@ awk -f pdc2pdf_main.awk hello_world.pdc
 
 A documentation about the PDC syntax is to be found as comments within the `hello_world.pdc` (currently in german).
 
+To better understand PDF, take a look at the file `PDF_muster_kommentiert.pdf`. Opened in a PDF viewer it shows a simple text "Hello World" with some lines and a polygon, but opened in a text editor however it's a fully documented example file, explaining each PDF command (currently in german).
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details
