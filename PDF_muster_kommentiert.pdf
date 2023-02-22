@@ -1,7 +1,7 @@
 % Author: Adrian Boehlen
-% Date: 19/08/2022
+% Date: 22/02/2023
 % Version 1.1
-% Purpose: "hello world"-PDF mit Erlaeuterung aller Anweisungen
+% Purpose: gueltiges PDF mit Erlaeuterung aller Anweisungen
 %
 % generelle Erlaeuterungen:
 % - PDF-Dateien bestehen aus Header, Body, Referenztabelle und Trailer
@@ -9,7 +9,7 @@
 % - die Generationennummer ist normalerweise 0
 % - Kommentare werden mit % eingeleitet und gehen bis zum Ende der Zeile
 % - nach einigen Schluesselwoertern, wie stream und endstream darf kein Kommentar stehen
-% - Dictionarys sind Sammlungen zusammengehöriger Objekte mit Bezeichner
+% - Dictionarys sind Sammlungen zusammengehoeriger Objekte mit Bezeichner
 % - werden PDF-Dateien im Editor bearbeitet (wie fuer dieses Beispiel), so ist das Zeilenumbruchs-
 %   zeichen zu beachten, da dies einen Einfluss auf den Byte-Offset der Objekte hat. Hier wird
 %   der UNIX-Zeilenumbruch verwendet (Newline - 8bit)
@@ -54,7 +54,7 @@ endobj                              % End-Tag des Seitenbereichsobjekts
 <<                                  % Beginn des Dictionaries
  /Type /Page                        % Objekttyp muss immer "Page" sein
  /Parent 3 0 R                      % Referenz zum "Parent-Objekt" (3), dem Seitenbereichsobjekt
- /MediaBox [0 0 595 841]            % Seitenformat in PostScript-Points (hier Naeherungswert fuer A4 quer)
+ /MediaBox [0 0 595 841]            % Seitenformat in PostScript-Points (hier Naeherungswert fuer A4 hoch)
  /Contents 5 0 R                    % Referenz zum Inhaltsobjekt (5)
 >>                                  % Ende des Dictionaries
 endobj                              % End-Tag des Seitenobjekts

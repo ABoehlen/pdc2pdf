@@ -1,14 +1,14 @@
 #!/bin/bash
 ###############################################################
 #
-# Build-Script fuer pdc2pdf    10.04.2021
+# Build-Script fuer pdc2pdf                          22.02.2023
 # Autor: Adrian Boehlen
 #
 # erzeugt aus den einzelnen Modulen eine AWK-Datei
 #
 ###############################################################
 
-if [ $# != 1 ]
+if [[ $# != 1 ]]
 then
   echo ' ' 
   echo ' '
@@ -23,7 +23,7 @@ then
 fi
 
 # aktuellen Zeitpunkt festlegen
-jetzt=`date -d now +%Y%m%d%H%M%S`
+jetzt=$(date -d now +%Y%m%d%H%M%S)
 
 # Inhalt der Module zusammenfuehren
 cat pdc2pdf_main.awk > $1
