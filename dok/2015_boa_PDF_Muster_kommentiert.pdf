@@ -1,0 +1,129 @@
+% Author: Adrian Boehlen
+% Date: 22/02/2023
+% Version 1.1
+% Purpose: gueltiges PDF mit Erlaeuterung aller Anweisungen
+%
+% generelle Erlaeuterungen:
+% - PDF-Dateien bestehen aus Header, Body, Referenztabelle und Trailer
+% - Die Objekte im Body muessen durchnummeriert sein und mit 1 beginnen
+% - die Generationennummer ist normalerweise 0
+% - Kommentare werden mit % eingeleitet und gehen bis zum Ende der Zeile
+% - nach einigen Schluesselwoertern, wie stream und endstream darf kein Kommentar stehen
+% - Dictionarys sind Sammlungen zusammengehoeriger Objekte mit Bezeichner
+% - werden PDF-Dateien im Editor bearbeitet (wie fuer dieses Beispiel), so ist das Zeilenumbruchs-
+%   zeichen zu beachten, da dies einen Einfluss auf den Byte-Offset der Objekte hat. Hier wird
+%   der UNIX-Zeilenumbruch verwendet (Newline - 8bit)
+
+%PDF-1.2                            % Der Header lautet immer %PDF- gefolgt von der Versionsnummer
+
+1 0 obj                             % Beginn des 1. Objekts (Generation 0) (Katalogobjekt)
+<<                                  % Beginn des Dictionaries
+ /Type /Catalog                     % Objekttyp muss immer "Catalog" sein
+ /Title 2 0 R                       % Referenz (R) zum Metadatenobjekt (Objekt Nr. 2)
+ /Pages 3 0 R                       % Referenz zum Seitenbereichsobjekt (Objekt Nr. 3)
+>>                                  % Ende des Dictionaries
+endobj                              % End-Tag des Katalogobjekts
+ 
+2 0 obj                             % Beginn des 2. Objekts (Metadatenobjekt)
+<<                                  % Beginn des Dictionaries
+  /Title (Hello World)              % die hier spezifizierten Angaben sind...
+  /Author (Adrian B\366hlen)        % ...im PDF unter File -> Properties...
+  /Creator (my own app)             % ...unter den entsprechenden...
+  /Producer (manually hacked)       % ...Schluesselwoertern aufgefuehrt
+  /Subject (hello world script)     % 
+  /Keywords (have fun :-\))         % Metazeichen muessen durch \ geschuetzt werden
+  /CreationDate (D:20150306120000Z) % Erstellungsdatum (06.03.2015, 12:00 Uhr UTC)
+>>                                  % Ende des Dictionaries
+endobj                              % End-Tag des Metadatenobjekts
+
+3 0 obj                             % Beginn des 3. Objekts (Seitenbereichsobjekt)
+<<                                  % Beginn des Dictionaries
+ /Type /Pages                       % Objekttyp muss immer "Pages" sein
+ /Count 1                           % Dokument besteht aus 1 Seite
+ /Kids [4 0 R]                      % Referenz zum "Child-Objekt" (4), dem Seitenobjekt
+ /Resources                         % Es folgt die Ressourcenliste
+ <<                                 % Beginn des Dictionaries
+  /ProcSet 6 0 R                    % Referenz zur Routine fuer die Inhaltsdarstellung (Objekt 6)
+  /Font                             % /Font enthaelt ein Dictionary, welches eine Referenz zum...
+  << /F1 7 0 R >>                   % ...Schriftobjekt (7) aufweist, aus dem ein Font mit dem
+ >>                                 % ...Namen "F1" aufgerufen wird
+>>                                  % Ende des Dictionaries
+endobj                              % End-Tag des Seitenbereichsobjekts
+
+4 0 obj                             % Beginn des 4. Objekts (Seitenobjekt)
+<<                                  % Beginn des Dictionaries
+ /Type /Page                        % Objekttyp muss immer "Page" sein
+ /Parent 3 0 R                      % Referenz zum "Parent-Objekt" (3), dem Seitenbereichsobjekt
+ /MediaBox [0 0 595 841]            % Seitenformat in PostScript-Points (hier Naeherungswert fuer A4 hoch)
+ /Contents 5 0 R                    % Referenz zum Inhaltsobjekt (5)
+>>                                  % Ende des Dictionaries
+endobj                              % End-Tag des Seitenobjekts
+
+5 0 obj                             % Beginn des 5. Objekts (Inhaltsobjekt)
+<<                                  % Beginn des Dictionaries
+ /Length 66                         % Bytelaenge des Objektinhaltes, d.h. dem Inhalt zwischen...
+>>                                  % ..."stream" und "endstream" (ohne diese beiden Zeilen)
+                                    % zwischen "stream" und den Daten muss genau ein Zeilenumbruch stehen
+stream
+BT                                  % Textbloecke werden mit "BT" (begin text) eingeleitet
+/F1 24 Tf                           % verwende (Tf) den Font "F1" in der Groesse "24" point
+227 740 Td                          % gehe (Td) an die Position "227 740"
+0 Tc                                % kein "character spacing", d.h. Schrift wird nicht gesperrt
+0 Tw                                % kein "word spacing", d.h. normale Leerraeume zwischen Woertern
+(Hello World) Tj                    % gebe den Text aus (Tj), der in Klammern steht
+ET                                  % Textbloecke werden mit "ET" (end text) abgeschlossen
+0 0 0 RG                            % Definition der Linienfarbe (RG) und der Flaechenfarbe (rg) im RGB-Modus...
+0.5 0.5 0.5 rg                      % ...wobei der Wertebereich jeder Farbe von 0 bis 1 geht
+1 w                                 % Definition einer Linie der Breite (w) "1" point
+230 735 m                           % gehe (m) zur Position "230 735"
+358 735 l                           % ziehe die Linie (l) zur Position "358 735"
+S                                   % zeichne die Linie (S)
+2 w                                 % Die naechste Linie ist "2" point breit
+[2 4] 0 d                           % Definition einer gestrichelten Linie: Element "2" point, Luecke "4" point
+230 730 m                           % "m", "l" und "S"-Befehle sind identisch mit normaler Linie. ...
+358 730 l                           % ...wenn danach wieder eine nicht gestrichelte Linie gezeichnet werden...
+S                                   % ...soll, muss die Strichlierung mit einer Zeile "[] 0 d" zurueckgesetzt werden.
+294 500 m                           % Flaechen werden gleich wie Linien gezeichnet; 1. Punkt mit "m"...
+230 600 l                           % ...beliebige weitere Punkte mit "l", z.B. so...
+358 600 l                           % ...und so
+h                                   % Flaeche schliessen (closepath, d.h. zurueck zum 1. Punkt)
+f                                   % Flaeche fuellen (f)
+endstream
+endobj                              % Nach "endstream" darf nur ein Zeilenumbruch stehen...
+                                    % ...danach folgt das End-Tag des Inhaltsobjekts
+
+6 0 obj                             % Beginn des 6. Objekts, welches...
+[/PDF /Text]                        % ...Routinen fuer die Inhaltsdarstellung definiert...
+endobj                              % ...von denen es total 5 gibt: "/PDF" enthaelt grundlegende
+                                    % ...Funktionen, "/Text" ist fuer die Textdarstellung
+
+7 0 obj                             % Beginn des 7. Objekts (Schriftobjekt)
+<<                                  % Beginn des Dictionaries
+ /Type /Font                        % Objekttyp muss immer Font sein
+ /Subtype /Type1                    % technischer Typus der Schrift (Postscript Type1)
+ /Name /F1                          % definierter Name, wie er im Seitenbereichsobjekt verwendet wird
+ /BaseFont /Helvetica-Bold          % Helvetica ist eine von 14 Standardschriften, die PDF kennt
+ /Encoding /WinAnsiEncoding         % Zeichencodierung: "WinAnsi" ist kompatibel mit ISO Latin-1
+>>                                  % Ende des Dictionaries
+endobj                              % End-Tag des Schriftobjekts
+
+xref                                % Beginn-Tag der Referenztabelle 
+0 8                                 % Anzahl Objekte (inkl. der Referenztabelle): 8
+0000000000 65535 f                  % In der ersten Zeile steht die Adresse des Objektes 0: Diese lautet...
+0000000912 00000 n                  % ...immer 0 und weist die maximale Generationsnummer auf. Diese lautet immer: 65535...
+0000001438 00000 n                  % ...Es muss als frei deklariert werden (f) Danach ist ein Blank obligatorisch
+0000002208 00000 n                  % In den weiteren 7 Zeilen ist der Byte-Offset der Objekte 1 - 7...
+0000003200 00000 n                  % ...festgehalten, wobei die nicht benutzten Stellen mit 0 aufzufuellen...
+0000003806 00000 n                  % ...sind. Im zweiten Block folgt die jeweilige Generationennummer, die...
+0000006475 00000 n                  % ...hier fuer jedes Objekt 0 ist. Da die Objekte 1 - 7 benutzt werden...
+0000006826 00000 n                  % ...muss am Schluss ein "n" stehen (used), gefolgt von einem Blank
+trailer                             % Beginn des Trailers
+<<                                  % Beginn des Dictionaries
+ /Size 8                            % Anzahl Objekte: 8
+ /Root 1 0 R                        % Referenz zum Katalogobjekt (1)
+ /Info 2 0 R                        % Referenz zum Metadatenobjekt (2)
+>>                                  % Ende des Dictionaries
+startxref                           % End-Tag der Referenztabelle
+7542                                % Byte-Offset des Beginn-Tags der Referenztabelle
+%%EOF                               % Ende des Dokuments. Sollte nachher noch was stehen...
+                                    % ...wird dies ignoriert

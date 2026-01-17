@@ -1,0 +1,78 @@
+# 25.03.2021, V1.1
+# Kommentare werden so eingeleitet (wie in Awk)
+#################
+# diese Datei muss in ANSI codiert sein (ISO 8859-1 / Latin-1, Westeuropäisch)
+# das heisst, jedes Zeichen belegt genau 1 Byte
+# als Trennzeichen dient ein Leerzeichen; Namen können ebenfalls Leerzeichen aufweisen (ausser Dateinamen)
+# Argumente werden ebenfalls mittels Leerzeichen getrennt
+#################
+# zuerst die Metadaten; sie erscheinen später in den PDF-Eigenschaften
+filename hello_world.pdf
+author Demo User
+title Hello World
+subject Demo Page A4
+#################
+# es folgen diverse Definitionen
+# Seitengrösse: Breite und Höhe in mm, hier wird also eine A4-Seite erzeugt
+page_size 210 297
+# Definieren der verwendeten Schriften und zuweisen eines Kürzels
+# Es können nur PDF-Standardschriften verwendet werden
+font Helvetica F1
+font Helvetica-Bold F2
+#################
+# Als hier werden die Grafikelemente (Linien und Text) definiert. 
+# Als erstes wird die als F1 definierte Schrift angewendet. Die weiteren Argumente sind:
+# Kürzel, Grösse in pt, x-Wert, y-Wert in mm, auszugebender Text
+# Der Nullpunkt ist unten links
+# Wird keine Farbe definiert, erscheint der Text in der Standardfarbe Schwarz
+text F1 8 6 287 Kopfzeile links
+text F1 8 182 287 Kopfzeile rechts
+text F1 8 6 8 filename.pdc
+text F1 8 92 8 Autor
+text F1 8 190 8 Datum
+# Dieser Text ist in roter Farbe. Dazu ist als erstes Argument der RGB-Code kommagetrent anzugeben
+text rgb,210,35,45 F2 22 80 261 Hello World
+# Als nächstes werden Linen gezeichnet. Die obligatorischen Argumente sind:
+# Breite in mm, Stützpunktpaare mit x/y Koordinaten (mit Leerzeichen getrennt hinereinander zu schreiben)
+line 0.3 20 230 190 230
+# Linien können stichliert sein. Diese Information ist als 3. Argument (optional) anzugeben
+# Die Syntax ist <Dash>-<Space>
+# Optional kann auch eine Farbe definiert werden (Sytax wie bei Text)
+line 0.4 2-4 rgb,210,35,45 80 259 123 259
+# Wird keine Strichlierung mehr gewünscht, ist als Argument einmal 0-0 anzugeben
+# Die Strichlierung wird so zurückgesetzt und für weitere Linien so übernommen
+line 0.3 0-0 20 245 190 245
+line 0.3 20 245 20 230
+line 0.3 86 245 86 230
+line 0.3 112 245 112 230
+line 0.3 138 245 138 230
+line 0.3 164 245 164 230
+line 0.3 190 245 190 230
+# Und wieder Text, diesmal die definierte Fettschrift
+# Der letzte Text war rot (Zeile 34). Um wieder schwarzen Text auszugeben,
+# muss einmal explizit die Farbe Schwarz definiert werden
+text rgb,0,0,0 F2 12 23 236 1. Feld
+text F2 12 89 236 2. Feld
+text F2 12 115 238 3. Feld
+text F2 12 115 233 2. Zeile
+text F2 12 141 236 4. Feld
+text F2 12 167 238 5. Feld
+text F2 12 167 233 2. Zeile
+# Weitere Linien
+# Diese Linien sind in blauer Farbe
+line 0.3 rgb,0,137,207 20 230 20 223
+line 0.3 86 230 86 223
+line 0.3 112 230 112 223
+line 0.3 138 230 138 223
+line 0.3 164 230 164 223
+line 0.3 190 230 190 223
+line 0.3 20 223 190 223
+# Nochmals Text in Schwarz, wieder die definierte Normalschrift
+# Sonderzeichen des ANSI-Zeichensatzes können direkt eingegeben werden
+# Sie werden beim Erstellen des PDFs so codiert,
+# dass sie unter allen Einstellungen richtig dargestellt werden.
+text F1 12 23 225 einige Sonderzeichen
+text F1 12 89 225  [](){}
+text F1 12 115 225 ÄäÖöÜü
+text F1 12 141 225 «hallo»
+text F1 12 167 225 ½ ¹ ² ³ ß
